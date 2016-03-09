@@ -1,3 +1,3 @@
 println("Please enter a string.");
-var string = readInt();
+var string = readLine();
 println(string);
