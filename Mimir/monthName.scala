@@ -3,7 +3,7 @@ println("Please enter a month as a numeric value.");
 val month = readInt();
 val monthArray = month - 1;
 if(month <= 0 || month >= 12){
-	println("Invalid Month");
+	println("Invalid month");
 }
 else{
 	//println(monthString[monthArray]);
