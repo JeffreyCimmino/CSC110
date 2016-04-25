@@ -1,5 +1,5 @@
 /*******
- * Author: <YOUR NAME(S) HERE>
+ * Author: Jeff Cimmino
  * CSC110 - Geometry (Shapes) Project
  * 
  * geometry.scala
@@ -59,7 +59,14 @@ def processPointInCircle() {
   **/
 def pointInCircle(cx: Double, cy: Double, rad: Double,
   px: Double, py: Double): Boolean = {
-  return false   // FIX: Clearly this needs to be fixed
+  //return false   // FIX: Clearly this needs to be fixed
+	val distance = math.sqrt(((px - cx) * (px - cx)) + ((py - cy) * (py - cy)))
+	if(distance > rad){
+		return false
+	}
+	else{
+		return true
+	}
 }
 
 /**
@@ -69,10 +76,24 @@ def pointInCircle(cx: Double, cy: Double, rad: Double,
 def processCircleCircle() {
   // Prompt and get the input
   println("Please enter the values for circle A: CX, CY, and Radius.")
-  // Get the input - FIX: Add code
+	val cxA = readDouble
+	val cyA = readDouble
+	val radA = readDouble
+	
 
   println("Please enter the values for circle B: CX, CY, and Radius.")
-  // Get the input - FIX: Add code
+	val cxB = readDouble
+	val cyB = readDouble
+	val radB = readDouble	
+	val distance = math.sqrt(((cxB - cxA) * (cxB - cxA)) + ((cyB - cyA) * (cyB - cyA)))
+	
+	if(circleCircleIntersection(cxA, cyA, radA, cxB, cyB, radB)){
+		println("The two circles intersect.")
+	}
+	else{
+		println("The two circles do not intersect.")
+	}
+	
 
   // Process that input - FIX: Add code
   // if (circles intersect)
@@ -92,7 +113,13 @@ def processCircleCircle() {
   **/
 def circleCircleIntersection(cxA: Double, cyA: Double, radA: Double,
   cxB: Double, cyB: Double, radB: Double): Boolean = {
-  return false   // FIX: Clearly this needs to be fixed
+	val distance = math.sqrt(((cxB - cxA) * (cxB - cxA)) + ((cyB - cyA) * (cyB - cyA)))
+	if(distance > (radA + radB)){
+		return false
+	}
+	else{
+		return true
+	}
 }
 
 /**
@@ -102,10 +129,21 @@ def circleCircleIntersection(cxA: Double, cyA: Double, radA: Double,
 def processSquareSquare() {
   // Prompt and get the input
   println("Please enter the values for squareA: Lower X, Lower Y, and Side Length.")
-  // Get the input - FIX: Add code
+  val lxA:Double = readDouble
+  val lyA:Double = readDouble
+  val sideA:Double = readDouble
 
   println("Please enter the values for squareB: Lower X, Lower Y, and Side Length.")
-  // Get the input - FIX: Add code
+  val lxB:Double = readDouble
+  val lyB:Double = readDouble
+  val sideB:Double = readDouble
+  
+  if(squareSquareIntersection(lxA, lyA, sideA, lxB, lyB, sideB)){
+	println("The two squares intersect.")
+  }
+  else{
+	println("The two squares do not intersect.")
+  }
 
   // Process that input - FIX: Add code
   // if (squares intersect)
@@ -125,6 +163,16 @@ def processSquareSquare() {
   **/
 def squareSquareIntersection(lxA: Double, lyA: Double, lenA: Double,
   lxB: Double, lyB: Double, lenB: Double): Boolean = {
-  return false   // FIX: Clearly this needs to be fixed
+	val uxA = lxA + lenA
+	val uyA = lyA + lenA
+	val uxB = lxB + lenB
+	val uyB = lyB + lenB
+	
+	if(lxB < uxA && lyB < uyA){
+		return true
+	}
+	else{
+		return false
+	}
 }
 
